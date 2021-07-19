@@ -1,0 +1,32 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model InventorySearchViewModel
+<form asp-action="Search">
+    <div class="form-group">
+        <input asp-for="Inventory.Product_Name" class="form-control" />
+        <input type="submit" value="Search for Product" class="btn btn-default" />
+    </div>
+</form> <div class="text-danger">@Model.SearchError</div>
+@if (Model.ResultList.Count > 0)
+{
+    <table class="table table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Product Found
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.ResultList)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Inventories" asp-route-id="@p.InventoryID">
+                            @p.Product_Name
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

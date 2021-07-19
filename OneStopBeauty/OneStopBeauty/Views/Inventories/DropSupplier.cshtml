@@ -1,0 +1,20 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model ItemOrdered
+
+
+<h3 style="color:mediumvioletred; text-align: left;">Are you sure you want to drop this supplier from the items ordered?</h3>
+
+@Html.DisplayFor(model => model.Supplier.Name) 
+@Html.DisplayFor(model => model.Supplier.Street_Address) 
+@Html.DisplayFor(model => model.Supplier.City) 
+@Html.DisplayFor(model => model.Supplier.State) 
+@Html.DisplayFor(model => model.Supplier.Zip_Code) 
+
+<div>
+    <form asp-action="DropSupplier">
+        <input type="hidden" asp-for="ItemOrderedID" />
+        <input type="submit" value="Drop Supplier" />
+        <a asp-action="ManageSuppliers" asp-route-id="@Model.InventoryID">Back to Manage Suppliers</a>
+    </form>
+
+</div>

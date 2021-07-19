@@ -1,0 +1,98 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model IEnumerable<OneStopBeauty.Models.ItemSold>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:mediumvioletred; text-align: center;">Items Sold</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Item Sold</a>
+</p>
+
+<style>
+    table {
+        background-color: white;
+    }
+</style>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.BillingStatement.BillingStatementID)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory.Product_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Services)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Online)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Shipped_Date_Sold_Item)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Arrived_Date_Sold_Item)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Ext_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.BillingStatement.BillingStatementID)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventory.Product_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Services.Service_Rendered)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Location.LocationID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Online)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shipped_Date_Sold_Item)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Arrived_Date_Sold_Item)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ext_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ItemSoldID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ItemSoldID">Details</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.ItemSoldID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

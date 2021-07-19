@@ -1,0 +1,89 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model OneStopBeauty.Models.BillingStatement
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script>
+
+    function getItemsSold(billingStatementID)
+    {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("getItemsSold", "BillingStatements")",
+            data: { id: billingStatementID },
+            success: function (pvHtlmResult)
+            {
+                $("#pvItemsSold").html(pvHtlmResult);
+            }, // the success attribute will call a javascript function that will
+            //find the div tag and set the html element equal to the partial view
+
+            error: function ()
+            {
+                alert("No Items Sold Found for this Billing Statement" + billingStatementID)
+            }
+
+        });
+    }
+
+
+</script>
+
+
+<h1 style="color:mediumvioletred; font:bold">Details</h1>
+
+<div style="background-color: white;">
+    <h4>Billing Statement</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BillingStatementID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BillingStatementID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.LastName)
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.LastName)
+            @Html.DisplayFor(model => model.Employee.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Invoice_Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Invoice_Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Total_Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Total_Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxes)
+        </dd>
+    </dl>
+
+    <a asp-action="Edit" asp-route-id="@Model.BillingStatementID" class="btn btn-primary">Edit</a> |
+    <a asp-action="Index">Back to List</a> |
+    <button id="btnViewItemsSold" onclick="getItemsSold(@Model.BillingStatementID)" class="btn btn-default">View Items Sold</button>
+</div>
+
+<div id="pvItemsSold">
+
+</div>

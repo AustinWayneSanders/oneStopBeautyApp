@@ -1,0 +1,71 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model IEnumerable<OneStopBeauty.Models.BillingStatement>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:mediumvioletred; text-align: center ;">Billing Statements</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Billing Statement</a>
+</p>
+
+<style>
+    table {
+        background-color: white;
+    }
+</style>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoice_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Taxes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                    @Html.DisplayFor(modelItem => item.Customer.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.FirstName)
+                    @Html.DisplayFor(modelItem => item.Employee.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Invoice_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Taxes)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BillingStatementID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BillingStatementID">Details</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.BillingStatementID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

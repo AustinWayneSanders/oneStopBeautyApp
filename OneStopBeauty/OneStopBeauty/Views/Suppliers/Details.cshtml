@@ -1,0 +1,82 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model OneStopBeauty.Models.Supplier
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+
+    function getInventory(supplierID)
+    {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetInventory", "Suppliers")",
+            data: { id: supplierID },
+            success: function (pvHtlmResult)
+            {
+                $("#pvInventory").html(pvHtlmResult);
+            }, // the success attribute will call a javascript function that will
+            //find the div tag and set the html element equal to the partial view
+
+            error: function ()
+            {
+                alert("No Inventory found for this Supplier" + supplierID)
+            }
+
+        });
+    }
+
+
+</script>
+
+
+<h1 style="color:mediumvioletred; font:bold">Details</h1>
+
+<div style="background-color: white;">
+    <h4>Supplier</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Street_Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Street_Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Zip_Code)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Zip_Code)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SupplierID">Edit</a> |
+    <a asp-action="Index">Back to List</a> |
+    <button id="btnViewInventory" onclick="getInventory(@Model.SupplierID)" class="btn btn-default">View Inventory from this Supplier</button>
+</div>
+
+
+<div id="pvInventory">
+
+</div>

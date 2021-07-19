@@ -1,0 +1,78 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model List<ItemSold>
+
+
+<table class="table table-striped" style ="background-color: white">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="FirstOrDefault().Inventory"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Services"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Location"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Online"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Shipped_Date_Sold_Item"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Arrived_Date_Sold_Item"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Ext_Price"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Quantity"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Discount"></label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var io in Model)
+        {
+        <tr>
+            <td>
+                @io.Inventory.Product_Name
+            </td>
+            <td>
+                @io.Services.Service_Rendered
+            </td>
+            <td>
+                @io.Location.LocationID
+            </td>
+            <td>
+                @io.Online
+            </td>
+            <td>
+                @io.Shipped_Date_Sold_Item
+            </td>
+            <td>
+                @io.Arrived_Date_Sold_Item
+            </td>
+            <td>
+                @io.Ext_Price
+            </td>
+            <td>
+                @io.Quantity
+            </td>
+            <td>
+                @io.Discount
+            </td>
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+

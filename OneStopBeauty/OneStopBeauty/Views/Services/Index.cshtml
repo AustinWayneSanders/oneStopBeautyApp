@@ -1,0 +1,56 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model IEnumerable<OneStopBeauty.Models.Service>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:mediumvioletred; text-align: center;">Services</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Service</a>
+</p>
+
+<style>
+    table {
+        background-color: white;
+    }
+</style>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Service_Rendered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service_Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service_Rendered)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service_Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ServiceID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ServiceID">Details</a> |
+                    <a asp-action="Delete" class="btn bg-danger" asp-route-id="@item.ServiceID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

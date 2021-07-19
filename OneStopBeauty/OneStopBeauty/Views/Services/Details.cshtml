@@ -1,0 +1,37 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model OneStopBeauty.Models.Service
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 style="color:mediumvioletred; font:bold">Details</h1>
+
+<div style="background-color: white;">
+    <h4>Service</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Service_Rendered)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Service_Rendered)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Service_Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Service_Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Service_Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Service_Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ServiceID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

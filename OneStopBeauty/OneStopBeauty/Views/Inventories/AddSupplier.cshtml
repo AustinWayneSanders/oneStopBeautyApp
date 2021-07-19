@@ -1,0 +1,64 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model List<AddSupplierViewModel>
+<!--a list using the view model-->
+
+<h2>Add Supplier to Items Ordered</h2>
+
+@if (Model.Count() > 0)
+{
+
+    <form asp-action="AddSupplier">
+        <table class="table table-striped" style ="background-color: white">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.First().Supplier.Name)</th> @*Displays the supplier name*@
+                    <th>@Html.DisplayNameFor(m => m.First().Supplier.Street_Address)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Supplier.City)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Supplier.State)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Supplier.Zip_Code)</th>
+                    <th>Add Supplier</th> <!-- heading for checkbox to add the supplier-->
+                </tr>
+
+            </thead>
+            <tbody>
+                <!-- loop through the list using a for loop so that we can track the counter to use
+                    as an index value for the items that are selected-->
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <!--display the value of the properties, lambda expression will need the
+                        index value from the loop to access the specific item in the list-->
+
+                        <td>@Html.DisplayFor(m => m[i].Supplier.Name)</td>
+                        <td>@Html.DisplayFor(m => m[i].Supplier.Street_Address)</td>
+                        <td>@Html.DisplayFor(m => m[i].Supplier.City)</td>
+                        <td>@Html.DisplayFor(m => m[i].Supplier.State)</td>
+                        <td>@Html.DisplayFor(m => m[i].Supplier.Zip_Code)</td>
+
+                        <td>
+                            <input type="checkbox" asp-for="@Model[i].Selected" />
+                            <input type="hidden" asp-for="@Model[i].Supplier.SupplierID" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="form-control">
+            <input type="submit" value="Add Supplier to items ordered" class="btn btn-default" />
+            <a asp-aciton="ManageSuppliers" asp-route-id="@ViewBag.InventoryID">Back to Manage Suppliers</a>
+
+        </div>
+
+    </form>
+
+}
+
+
+else
+{
+    <div> No Suppliers Available to Add </div>
+  
+    <a asp-aciton="ManageSuppliers" asp-route-id="@ViewBag.InventoryID">Back to Manage Suppliers</a>
+  
+}

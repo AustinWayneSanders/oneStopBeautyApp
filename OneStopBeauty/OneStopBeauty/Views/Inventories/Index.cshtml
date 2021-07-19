@@ -1,0 +1,88 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model IEnumerable<OneStopBeauty.Models.Inventory>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:mediumvioletred; text-align: center;">Inventory</h1>
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Inventory</a>
+</p>
+
+<p>
+    <a asp-action="Search" class="btn btn-primary">Search for Product</a>
+</p>
+
+<style>
+    table {
+        background-color: white;
+    }
+</style>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purpose)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unit_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purpose)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.InventoryID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.InventoryID">Details</a> |
+                    <a asp-action="ManageSuppliers" asp-route-id="@item.InventoryID">Manage Suppliers</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.InventoryID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if ((List<Inventory>)ViewBag.UserProductClicks != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    You have clicked on the following products:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in
+          (List<Inventory>)ViewBag.UserProductClicks)
+            {
+                <tr><td>@a.Product_Name</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>You haven't clicked on any products yet. Please explore!</h4>
+}
+
+

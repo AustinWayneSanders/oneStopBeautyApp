@@ -1,0 +1,80 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model OneStopBeauty.Models.ItemSold
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:mediumvioletred; font:bold">Details</h1>
+
+<div style="background-color: white;">
+    <h4>Items Sold</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BillingStatement)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BillingStatement.BillingStatementID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Inventory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Inventory.InventoryID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Online)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Online)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Services)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Services.ServiceID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Location.LocationID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shipped_Date_Sold_Item)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shipped_Date_Sold_Item)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Arrived_Date_Sold_Item)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Arrived_Date_Sold_Item)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ext_Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ext_Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ItemSoldID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

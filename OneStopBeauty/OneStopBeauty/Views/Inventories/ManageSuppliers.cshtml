@@ -1,0 +1,44 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model IEnumerable<ItemOrdered>
+
+<h2 style="color:mediumvioletred; text-align: center;">Manage Suppliers for Items Ordered</h2>
+
+<p>
+    <a asp-action="AddSupplier" class="btn btn-primary" asp-route-id="@ViewBag.InventoryID">Add Supplier to Inventory</a>
+</p>
+
+<!--loop through the list of suppliers itemsOrdered in a Table-->
+
+<table class="table table-striped" style="background-color: white">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--loop through the list-->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(i => item.Supplier.Name)</td>
+                <td>@Html.DisplayFor(i => item.Supplier.Street_Address)</td>
+                <td>@Html.DisplayFor(i => item.Supplier.City)</td>
+                <td>@Html.DisplayFor(i => item.Supplier.State)</td>
+                <td>@Html.DisplayFor(i => item.Supplier.Zip_Code)</td>
+                <td><a asp-action="DropSupplier" class="btn btn-danger" asp-route-id="@item.ItemOrderedID">Drop</a></td>
+            </tr>
+
+
+        }
+
+
+    </tbody>
+</table>
+
+<a asp-action="Index" asp-controller="Inventories" >Click to Return to Inventory</a>
+

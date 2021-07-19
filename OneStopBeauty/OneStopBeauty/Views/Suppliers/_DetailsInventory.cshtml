@@ -1,0 +1,46 @@
+﻿@*Created by Austin Sanders-05/05/2021*@
+@model List<ItemOrdered>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="FirstOrDefault().Inventory"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Product_Code"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Shipped_Date_Ordered_Item"></label>
+            </th>
+            <th>
+                <label asp-for="FirstOrDefault().Arrived_Date_Ordered_Item"></label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var io in Model)
+        {
+            <tr>
+                <td>
+                    @io.Inventory.Product_Name
+                </td>
+                <td>
+                    @io.Product_Code
+                </td>
+                <td>
+                    @io.Shipped_Date_Ordered_Item
+                </td>
+                <td>
+                    @io.Arrived_Date_Ordered_Item
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
