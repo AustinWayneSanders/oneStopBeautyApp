@@ -2,7 +2,7 @@
 
 ## Project Description
 
-The Beauty Salon Management System (BSMS) will manage employees, products, salon location, and order processing. This is a full stack application created with ASP.net core which includes a login page with user authenication guards. Employeers can update billing statements, products, locations, and clients whereas regular users are allowed to view products and submit their oders.  
+The Beauty Salon Management System (BSMS) will manage employees, products, salon location, and order processing. This is a full stack application created with ASP.net core which includes a login page with user authenication guards. Employeers can update billing statements, products, locations, and clients whereas regular users are allowed to view products and submit their orders only.  
 
 ## Technologies Used
 
